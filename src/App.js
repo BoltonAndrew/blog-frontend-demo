@@ -37,6 +37,7 @@ const App = () => {
 
 const Container = styled.div`
     width: 100vw;
+    height: 100vh;
     background-color: #F6F7F8;
     display: flex;
     flex-direction: column;

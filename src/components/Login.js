@@ -24,6 +24,10 @@ const Container = styled.form`
 const InputContainer = styled.input`
     margin-left: 1vw;
     border-radius: 5px;
+    background-color: #F6F7F8;
+    &:active {
+        border-color: #1877F2;
+    };
 `;
 
 const ButtonContainer = styled.button`

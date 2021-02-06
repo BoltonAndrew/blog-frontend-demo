@@ -28,9 +28,11 @@ const Container = styled.div`
 const PostContainer = styled.div`
     width: 40vw;
     box-shadow: 1px 1px 1px 1px;
-    margin-top: 2vh;
+    padding-left: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     border-radius: 10px;
-    padding: 1vw;
+    background-color: #FFFFFF
 `;
 
 export default Posts

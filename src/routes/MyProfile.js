@@ -5,19 +5,19 @@ import Posts from '../components/Posts';
 
 const MyProfile = ({user, setTitle, setContent, posts}) => {
     return(
-        <div>
+        <Container>
             <Form user={user} setTitle={setTitle} setContent={setContent}/>
             <Posts user={user} posts={posts}/>
-        </div>
+        </Container>
     )
 }
 
 const Container = styled.div`
     height: 100vh;
     width: 100vw;
-    background-color: #F6F7F8
     display: flex;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
 `;
 
