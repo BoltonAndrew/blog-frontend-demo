@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Posts = ({ user, posts }) => {
+const Posts = ({ user, users, posts }) => {
     return(
     <div>
         {posts.map((post, index) => {
