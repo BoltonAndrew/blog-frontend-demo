@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { addPost } from '../utils';
 
 const Form = ({ user }) => {
@@ -13,5 +14,14 @@ const Form = ({ user }) => {
         </form>
     )
 }
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background-color: #F6F7F8
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default Form
