@@ -36,12 +36,11 @@ const App = () => {
 };
 
 const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: #F6F7F8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100vw;
+    background-color: #F6F7F8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export default App;

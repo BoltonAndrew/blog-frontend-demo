@@ -4,27 +4,33 @@ import styled from 'styled-components';
 
 const Posts = ({ user, users, posts }) => {
     return(
-    <div>
+    <Container>
         {posts.map((post, index) => {
             return(
-                <div key={index}>
+                <PostContainer key={index}>
                     <h1>{post.title}</h1>
                     <p>{post.content}</p>
                     <p>{moment.utc(post.createdAt).fromNow()}</p>
-                </div>
+                </PostContainer>
             )
         })}
-    </div>
+    </Container>
     )
 }
 
 const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: #F6F7F8
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const PostContainer = styled.div`
+    width: 40vw;
+    box-shadow: 1px 1px 1px 1px;
+    margin-top: 2vh;
+    border-radius: 10px;
+    padding: 1vw;
 `;
 
 export default Posts

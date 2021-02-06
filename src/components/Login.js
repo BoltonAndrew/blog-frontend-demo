@@ -7,21 +7,28 @@ const Login = ({ setUser }) => {
     const [password, setPassword] = useState("");
 
     return(
-        <form onSubmit={(event) => login(event, email, password, setUser)}>
-            <input type='text' placeholder='email' onChange={(event) => setEmail(event.target.value)}/>
-            <input type='text' placeholder='password' onChange={(event) => setPassword(event.target.value)}/>
-            <button>Login</button>
-        </form>
+        <Container onSubmit={(event) => login(event, email, password, setUser)}>
+            <InputContainer type='text' placeholder='email' onChange={(event) => setEmail(event.target.value)}/>
+            <InputContainer type='text' placeholder='password' onChange={(event) => setPassword(event.target.value)}/>
+            <ButtonContainer>Login</ButtonContainer>
+        </Container>
     )
 }
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: #F6F7F8
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const Container = styled.form`
+    height: 5vh;
+    position: relative;
+    top: 1vh;
+`;
+
+const InputContainer = styled.input`
+    margin-left: 1vw;
+    border-radius: 5px;
+`;
+
+const ButtonContainer = styled.button`
+    margin-left: 1vw;
+    border-radius: 5px;
 `;
 
 export default Login
