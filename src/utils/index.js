@@ -14,9 +14,10 @@ const login = async (event, email, password, setUser) => {
 
 const addPost = async (event, title, content, user) => {
     event.preventDefault();
-    const response = await fetch(`http://localhost:5000/posts/${user._id}`, {
+    const response = await fetch(`http://localhost:5000/posts/${user.user._id}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.user.tokens[0].token}` },
         body: JSON.stringify({
             title: title,
             content: content,
