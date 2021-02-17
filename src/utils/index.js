@@ -1,5 +1,5 @@
 const checkToken = async (setUser) => {
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/users/myprofile', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users/myprofile`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
     });
@@ -13,7 +13,7 @@ const checkToken = async (setUser) => {
 
 const login = async (event, email, password, setUser, setErrorMessage) => {
     event.preventDefault();
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/users/login', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -32,7 +32,7 @@ const login = async (event, email, password, setUser, setErrorMessage) => {
 
 const logout = async (event, user, setUser) => {
     event.preventDefault();
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/users/logout', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users/logout`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
     });
@@ -43,7 +43,7 @@ const logout = async (event, user, setUser) => {
 
 const addUser = async (event, name, email, password, setUser) => {
     event.preventDefault();
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/users', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -59,7 +59,7 @@ const addUser = async (event, name, email, password, setUser) => {
 
 const updateUser = async (event, user, name, email, password, setUser) => {
     event.preventDefault();
-    const response = await fetch(`https://fathomless-plains-69423.herokuapp.com/users/${user._id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${user._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json',
                    'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
@@ -75,7 +75,7 @@ const updateUser = async (event, user, name, email, password, setUser) => {
 
 const deleteUser = async (event, user, setUser) => {
     event.preventDefault();
-    const response = await fetch(`https://fathomless-plains-69423.herokuapp.com/users`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
     });
@@ -85,7 +85,7 @@ const deleteUser = async (event, user, setUser) => {
 
 const addPost = async (event, title, content, user, setPosts, setTitle, setContent) => {
     event.preventDefault();
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/posts', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
@@ -102,7 +102,7 @@ const addPost = async (event, title, content, user, setPosts, setTitle, setConte
 
 const updatePost = async (event, title, content, user, post) => {
     event.preventDefault();
-    const response = await fetch(`https://fathomless-plains-69423.herokuapp.com/posts/${post._id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json',
                    'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
@@ -116,7 +116,7 @@ const updatePost = async (event, title, content, user, post) => {
 
 const deletePost = async (event, user, post) => {
     event.preventDefault();
-    const response = await fetch(`https://fathomless-plains-69423.herokuapp.com/posts/${post._id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('MyToken')}` },
     });
@@ -124,14 +124,14 @@ const deletePost = async (event, user, post) => {
 };
 
 const fetchPosts = async (setPosts) => {
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/posts');
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
     const data = await response.json();
     let posts = data.reverse();
     setPosts(posts);
 };
 
 const fetchUsers = async (setUsers) => {
-    const response = await fetch('https://fathomless-plains-69423.herokuapp.com/users');
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users`);
     const data = await response.json();
     setUsers(data);
 };
