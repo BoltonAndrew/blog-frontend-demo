@@ -1,1 +1,1 @@
-# Code Nation Full Stack Challenge# blog-frontend-demo
+# Code Nation Full Stack Challenge

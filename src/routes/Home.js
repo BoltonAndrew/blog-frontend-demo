@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import Form from '../components/Form';
 import Posts from '../components/Posts';
 
-const Home = ({user, users, setTitle, setContent, posts}) => {
+const Home = ({user, users, setTitle, setContent, posts, setPosts}) => {
     return(
         <Container>
-            {user && <Form user={user} setTitle={setTitle} setContent={setContent}/>}
+            {user && <Form user={user} setTitle={setTitle} setContent={setContent} setPosts={setPosts}/>}
             <Posts user={users} posts={posts}/>
         </Container>
     )

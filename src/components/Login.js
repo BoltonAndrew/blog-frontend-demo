@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { login } from '../utils';
+import { login, addUser } from '../utils';
 
 const Login = ({ setUser }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [newUser, setNewUser] = useState(false);
+    const [name, setName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     return(
-        <Container onSubmit={(event) => login(event, email, password, setUser)}>
+        <>
+        <Container onSubmit={(event) => {
+            if (!newUser) {
+                    login(event, email, password, setUser, setErrorMessage)
+                } else {
+                    addUser(event, name, email, password, setUser)
+            }}}>
+            {newUser && <InputContainer type='text' placeholder='username' onChange={(event) => setName(event.target.value)}/>}
             <InputContainer type='text' placeholder='email' onChange={(event) => setEmail(event.target.value)}/>
             <InputContainer type='text' placeholder='password' onChange={(event) => setPassword(event.target.value)}/>
-            <ButtonContainer>Login</ButtonContainer>
+            {!newUser && <ButtonContainer>Login</ButtonContainer>}
+            {newUser && <ButtonContainer>Create Account</ButtonContainer>}
         </Container>
+        {errorMessage && <p>{errorMessage}</p>}
+        {!newUser && <ButtonContainer2 onClick={() => setNewUser(true)}>Sign Up</ButtonContainer2>}
+        </>
     )
 }
 
@@ -33,6 +47,12 @@ const InputContainer = styled.input`
 const ButtonContainer = styled.button`
     margin-left: 1vw;
     border-radius: 5px;
+`;
+
+const ButtonContainer2 = styled.button`
+    height: 3vh;
+    border-radius: 5px;
+    align-self: center;
 `;
 
 export default Login

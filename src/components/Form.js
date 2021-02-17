@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { addPost } from '../utils';
 
-const Form = ({ user }) => {
+const Form = ({ user, setPosts }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState([]);
 
     return(
-        <Container onSubmit={(event) => addPost(event, title, content, user)}>
-            <InputContainer type='text' placeholder='Title' onChange={(event) => setTitle(event.target.value)}/>
-            <TextareaContainer placeholder='Content' onChange={(event) => setContent(event.target.value)}/>
+        <Container onSubmit={(event) => addPost(event, title, content, user, setPosts, setTitle, setContent)}>
+            <InputContainer type='text' placeholder='Title' value={title} onChange={(event) => setTitle(event.target.value)}/>
+            <TextareaContainer placeholder='Content' value={content} onChange={(event) => setContent(event.target.value)}/>
             <button>Add Post</button>
         </Container>
     )

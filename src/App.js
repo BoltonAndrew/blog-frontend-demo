@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Home from './routes/Home';
 import MyProfile from './routes/MyProfile';
-import { fetchPosts, fetchUsers } from './utils';
+import UpdateProfile from './routes/UpdateProfile';
+import { fetchPosts, fetchUsers, checkToken } from './utils';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -12,6 +13,7 @@ const App = () => {
   const [user, setUser] = useState('');
 
   useEffect(() => {
+    checkToken(setUser);
     fetchPosts(setPosts);
     fetchUsers(setUsers);
   }, [])
@@ -20,13 +22,16 @@ const App = () => {
   return (
     <Container>
       <Router>
-      <Navbar user={user} setUser={setUser} home='/' profile='/myprofile'/>
+      <Navbar user={user} setUser={setUser} home='/' profile='/myprofile' updateProfile='/updateprofile'/>
       <Switch>
         <Route exact path='/'>
-          <Home user={user} users={users} posts={posts}/>
+          <Home user={user} users={users} posts={posts} setPosts={setPosts}/>
         </Route>
         <Route path='/myprofile'>
           <MyProfile user={user} posts={posts}/>
+        </Route>
+        <Route path='/updateprofile'>
+          <UpdateProfile user={user} setUser={setUser}/>
         </Route>
       </Switch>
       </Router> 

@@ -3,6 +3,8 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 const Posts = ({ user, users, posts }) => {
+    
+
     return(
     <Container>
         {posts.map((post, index) => {
